@@ -66,6 +66,37 @@ fragment sectionModules on LandingPage {
   }
 }
 
+fragment pricingBox on LandingPage {
+  pricingBox {
+    totalPrice
+    numberInstallments
+    priceInstallments
+    benefits
+    button {
+      label
+      url
+    }
+  }
+}
+
+fragment sectionAboutUs on LandingPage {
+  sectionAboutUs {
+    title
+    authors {
+      photo {
+        url
+      }
+      name
+      role
+      socialLinks {
+        title
+        url
+      }
+      description
+    }
+  }
+}
+
 query GET_LANDING_PAGE {
   landingPage {
     ...logo
@@ -74,8 +105,11 @@ query GET_LANDING_PAGE {
     ...sectionTech
     ...sectionConcepts
     ...sectionModules
+    ...pricingBox
+    ...sectionAboutUs
   }
 }
+
 `
 
 export default GET_LANDING_PAGE
