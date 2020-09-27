@@ -4,29 +4,17 @@ import Heading from 'components/Heading'
 import Container from 'components/Container'
 
 import * as S from './styles'
-import { LandingPageProps } from 'types/api'
+import { SectionAboutProjectProps } from 'types/api'
+import { getImageUrl } from 'utils/getImageUrl'
 
-const SectionAboutProject = ({aboutProject}: LandingPageProps) => (
+const SectionAboutProject = ({title, description, image}: SectionAboutProjectProps) => (
   <S.Wrapper>
     <Container>
       <S.Container>
-        <S.Image>
-          <source
-            srcSet={require('@images/project.png?webp')}
-            type="image/webp"
-          />
-          <source srcSet={require('@images/project.png')} type="image/png" />
-          <img
-            src={require('@images/project.png')}
-            loading="lazy"
-            // alt={sectionAboutProject.image.alternativeText}
-          />
-        </S.Image>
+        <S.Image src={getImageUrl(image.url)} alt={image.alternativeText} loading="lazy"/>
         <div>
-          <Heading>{aboutProject.title}</Heading>
-          <S.Text>
-            {aboutProject.description}
-          </S.Text>
+          <Heading>{title}</Heading>
+          <S.Text dangerouslySetInnerHTML={{ __html: description}} />
         </div>
       </S.Container>
     </Container>

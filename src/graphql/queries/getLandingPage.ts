@@ -6,17 +6,6 @@ fragment logo on LandingPage {
   }
 }
 
-fragment aboutProject on LandingPage {
-	sectionAboutProject {
-    title
-    description
-    image {
-      alternativeText
-      url
-    }
-  }  
-}
-
 fragment header on LandingPage {
   header {
     title
@@ -32,13 +21,50 @@ fragment header on LandingPage {
   }
 }
 
+fragment sectionAboutProject on LandingPage {
+  sectionAboutProject {
+    title
+    description
+    image {
+      alternativeText
+      url
+    }
+  }
+}
+
+fragment sectionTech on LandingPage {
+  sectionTech {
+    title
+    techIcons {
+      title
+      icon {
+        name
+        alternativeText
+        url
+      }
+    }
+  }
+}
+
+fragment sectionConcepts on LandingPage {
+  sectionConcepts {
+    title
+    concepts {
+      title
+    }
+  }
+}
+
 query GET_LANDING_PAGE {
   landingPage {
     ...logo
     ...header
-    ...aboutProject
+    ...sectionAboutProject
+    ...sectionTech
+    ...sectionConcepts
   }
 }
+
 `
 
 export default GET_LANDING_PAGE
